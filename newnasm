@@ -1,0 +1,41 @@
+#!/usr/bin/bash
+# This script creates a template for assembly file
+# params: program name
+# author @joeldevel
+
+# check no args
+if [ $# -eq 0 ]
+  then
+    echo "No program name given.Please provide a program name EXIT"
+	exit
+fi
+
+# this is the argument passed as program name
+namearg="$1"
+
+file="$1.asm"
+
+### mm/dd/yyyy ###
+currentdate=$(date +'%m/%d/%Y')
+# create file
+touch $file
+
+# write template content to it
+cat > $file  << EOF
+;author:      $USER
+;date:        $currentdate
+;compile:     nasm $file -f elf64
+;linkedition: gcc $namearg.o <other libs> -no-pie -o $namearg.out
+
+global main
+
+section .data 
+
+section .bss  
+
+section .text
+
+main: 
+
+	ret
+EOF
