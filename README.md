@@ -13,7 +13,7 @@ available everywhere.
 
 `$ newnasm YOUR_PROGRAM_NAME`
 
-Creates a file with extension `.asm`
+Creates a file with extension `.asm` and a makefile
 
 Example: 
 
@@ -25,7 +25,8 @@ will create a file named `hello_world.asm` with the following content
 ;author:      floncho
 ;date:        05/14/2019
 ;compile:     nasm hello_world.asm -f elf64
-;linkedition: gcc hello_world.o <other libs> -no-pie -o hello_world.out
+;linkedition: gcc hello_world.o <other libs> -no-pie -o hello_world.
+;compile and linkedit: make
 
 global main
 
@@ -40,4 +41,10 @@ main:
 	ret
 ```
 
+And a makefile with instructions to build the program.
+
 So now you are ready to go!
+
+## Build
+
+Just run `make`
